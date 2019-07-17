@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/foundItemImageAdapterItem"
         android:layout_width="match_parent"
-        android:layout_height="215dp"
-        app:srcCompat="@drawable/macbookTestImage" />
+        android:layout_height="240dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/macbooktestimage" />
 
     <TextView
         android:id="@+id/foundItemTitleAdapterItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorPrimaryDark"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/foundItemDescriptionAdapterItem"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="TextView" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text="TextView"
+        android:textColor="@color/colorPrimaryDark" />
+
 </LinearLayout>

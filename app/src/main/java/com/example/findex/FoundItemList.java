@@ -42,29 +42,27 @@ public class FoundItemList extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-
     }
 
     private void PopulateList(){
         Date date = new Date(0);
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbookTestImage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
+        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
                 "3d printing machines", date));
-
     }
 }

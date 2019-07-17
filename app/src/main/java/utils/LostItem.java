@@ -2,21 +2,29 @@ package utils;
 
 import java.util.Date;
 
-public class FoundItem {
+public class LostItem {
     Long id;
-    int imageResID;
     String title;
     String description;
     Date date;
+    int category;
     // Add an enum for a place
     // Add enum for category
 
-    public FoundItem(Long id, int imageResID, String title, String description, Date date) {
+    public LostItem(Long id, String title, String description, Date date, int category) {
         this.id = id;
-        this.imageResID = imageResID;
         this.title = title;
         this.description = description;
         this.date = date;
+        this.category = category;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     public Long getId() {
@@ -25,14 +33,6 @@ public class FoundItem {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getImageResID() {
-        return imageResID;
-    }
-
-    public void setImageResID(int imageResID) {
-        this.imageResID = imageResID;
     }
 
     public String getTitle() {
@@ -60,8 +60,4 @@ public class FoundItem {
     }
 
 
-
-
 }
-
-
