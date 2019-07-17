@@ -1,6 +1,9 @@
 package com.example.findex;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,18 +33,15 @@ public class FoundItemList extends AppCompatActivity {
         foundListView.setAdapter(myAdapter);
 
         // Will add item description page based on item id.
-//        foundListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                // trigger the second activity - character info
-//                Intent intent = new Intent();
-//
-//                // Pass in the character name to second activity
-//                intent.putExtra("FoundItemId",foundItems.get(i).getId());
-//                startActivity(intent);
-//            }
-//        });
+        foundListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(FoundItemList.this, FoundItemDetailActivity.class);
+                intent.putExtra("charName", foundItems.get(i).getTitle());
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void PopulateList(){
