@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">FindEx</string>
-    <string name="email">email</string>
-    <string name="password">password</string>
+    <string name="email">Enter Your Email</string>
+    <string name="password">Enter The Password</string>
     <string name="login">Login</string>
+    <string name="register">Register</string>
 
 </resources>
