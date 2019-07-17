@@ -39,7 +39,7 @@
                 tools:text="Wednesday, July 17, 2019" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
                 android:layout_marginStart="10dp"
