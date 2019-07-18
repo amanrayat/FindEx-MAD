@@ -11,6 +11,9 @@
     <string name="lost">Lost</string>
     <string name="found">Found</string>
     <string name="category">Category</string>
+    <string name="schoolEmail">NEU Email</string>
+    <string name="password2">Password</string>
+    <string name="Confirm">Confirm Password</string>
     <string name="add">+</string>
     <string-array name="lists">
         <item>Found Items</item>

@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
-        <activity android:name=".ItemEntry"></activity>
-        <activity android:name=".FoundItemDetailActivity"></activity>
+        <activity android:name=".Registration"></activity>
+        <activity android:name=".ItemEntry" />
+        <activity android:name=".FoundItemDetailActivity" />
         <activity android:name=".FoundItemList" />
-        <activity android:name=".LostItemList"></activity>
+        <activity android:name=".LostItemList" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

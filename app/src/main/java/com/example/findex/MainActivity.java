@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Button login;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,25 @@ public class MainActivity extends AppCompatActivity {
                 openFoundList();
             }
         });
+
+        // When "login" button is clicked, move to FoundList activity
+        register = findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegistration();
+            }
+        });
     }
 
     // Function used in onCreate to open FoundList activity
     public void openFoundList(){
         Intent intent = new Intent(this, FoundItemList.class);
+        startActivity(intent);
+    }
+
+    public void openRegistration(){
+        Intent intent = new Intent(this, Registration.class);
         startActivity(intent);
     }
 }
