@@ -38,6 +38,7 @@ public class CustomLostItemListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null){
+            view = View.inflate(context,R.layout.lost_item_adapter_item, null);
         }
         ImageView imageView = view.findViewById(R.id.lostItemIcon);
         TextView text = view.findViewById(R.id.lostItemTitle);

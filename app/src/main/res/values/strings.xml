@@ -4,4 +4,17 @@
     <string name="password">Enter The Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="submit">Submit</string>
+    <string name="lost">Lost</string>
+    <string name="found">Found</string>
+    <string name="category">Category</string>
+    <string name="add">+</string>
+    <string-array name="lists">
+        <item>Found Items</item>
+        <item>Lost Items</item>
+    </string-array>
+
 </resources>
