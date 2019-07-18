@@ -71,7 +71,7 @@ public class FoundItemList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(FoundItemList.this, FoundItemDetailActivity.class);
-                intent.putExtra("charName", foundItems.get(i).getTitle());
+                intent.putExtra("title", foundItems.get(i).getTitle());
                 startActivity(intent);
             }
         });
