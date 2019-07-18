@@ -12,15 +12,16 @@
         android:id="@+id/myListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-<<<<<<< HEAD
-=======
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
->>>>>>> 26505f57fbc011479cc674ab3e2ef16079edff3e
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="1dp" />
+        android:layout_marginTop="50dp"/>
+<!--<<<<<<< HEAD-->
+<!--=======-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+<!--&gt;>>>>>> 26505f57fbc011479cc674ab3e2ef16079edff3e-->
+        <!--android:layout_marginStart="0dp"-->
+        <!--android:layout_marginEnd="0dp"-->
+        <!--android:layout_marginBottom="1dp" />-->
 
     <Button
         android:id="@+id/addButton"
