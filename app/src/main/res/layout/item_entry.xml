@@ -1,143 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ItemEntry">
 
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="278dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="191dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="422dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/location" />
-
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="278dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="258dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="355dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/category" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:layout_margin="20dp"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <EditText
         android:id="@+id/editText6"
-        android:layout_width="278dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText7"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="135dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="478dp"
+        android:layout_margin="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/title" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="142dp"
-        android:layout_height="36dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="207dp"
-        android:layout_marginBottom="605dp"
-        android:layout_weight="1"
-        android:background="@color/colorAccent"
-        android:text="Insert Image"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/buttonFound"
-        android:layout_width="278dp"
-        android:layout_height="47dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="519dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="92dp"
-        android:background="#F4282D"
-        android:text="@string/submit"
-        android:textColor="#F2F2F2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="278dp"
-        android:layout_height="108dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="329dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="221dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:text="@string/description" />
+        android:hint="@string/title"
+        android:inputType="textPersonName" />
 
     <RadioGroup
-        android:layout_width="278dp"
+        android:layout_width="match_parent"
         android:layout_height="29dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="89dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="541dp"
+        android:layout_margin="20dp"
         android:orientation="horizontal">
 
         <RadioButton
-            android:buttonTint="@color/colorPrimary"
             android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:buttonTint="@color/colorPrimary"
             android:text="@string/lost" />
 
         <RadioButton
-            android:buttonTint="@color/colorPrimary"
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:buttonTint="@color/colorPrimary"
             android:text="@string/found" />
+
     </RadioGroup>
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="@string/category"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="@string/location"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_margin="20dp"
+        android:gravity="start|top"
+        android:hint="@string/description"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/buttonFound"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_margin="20dp"
+        android:background="#F4282D"
+        android:text="@string/submit"
+        android:textColor="#F2F2F2" />
+
+</LinearLayout>

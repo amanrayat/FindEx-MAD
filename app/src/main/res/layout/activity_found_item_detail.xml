@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="#F4282D"
-                android:text="Claim !!"
+                android:text="Get Location"
                 android:textColor="#F2F2F2" />
         </LinearLayout>
     </ScrollView>

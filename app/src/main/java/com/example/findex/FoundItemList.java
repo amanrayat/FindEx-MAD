@@ -30,31 +30,31 @@ public class FoundItemList extends AppCompatActivity {
         setContentView(R.layout.activity_found_item_list);
 
         //Spinner creation
-        final Spinner mySpinner = (Spinner) findViewById(R.id.spinner1);
+//        final Spinner mySpinner = (Spinner) findViewById(R.id.spinner1);
 
         ArrayAdapter<String> mySpinnerAdapter = new ArrayAdapter<String>(FoundItemList.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.lists));
         mySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(mySpinnerAdapter);
+//        mySpinner.setAdapter(mySpinnerAdapter);
 
 
-        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String test = ((TextView) view).getText().toString();
-                if(test.equals("Lost Items")){
-                    mySpinner.setSelection(0);
-                    Intent intent = new Intent(view.getContext(), LostItemList.class);
-                    startActivity(intent);
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String test = ((TextView) view).getText().toString();
+//                if(test.equals("Lost Items")){
+//                    mySpinner.setSelection(0);
+//                    Intent intent = new Intent(view.getContext(), LostItemList.class);
+//                    startActivity(intent);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
 
 
