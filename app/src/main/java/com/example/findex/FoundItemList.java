@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,7 +22,7 @@ import utils.FoundItem;
 
 public class FoundItemList extends AppCompatActivity {
 
-    Button itemEntry;
+    FloatingActionButton itemEntry;
     ListView foundListView;
     ArrayList<FoundItem> foundItems = new ArrayList<FoundItem>();
 

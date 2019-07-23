@@ -6,77 +6,87 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ItemEntry">
-
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:layout_margin="20dp"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:ems="10"
-        android:hint="@string/title"
-        android:inputType="textPersonName" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="29dp"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_margin="20dp"
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
-            android:text="@string/lost" />
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:ems="10"
+                android:hint="@string/title"
+                android:inputType="textPersonName" />
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary"
-            android:text="@string/found" />
+            <EditText
+                android:id="@+id/editText8"
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_margin="20dp"
+                android:gravity="start|top"
+                android:hint="@string/description"
+                android:inputType="textMultiLine" />
 
-    </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="@string/category"
-        android:inputType="textPersonName" />
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="@string/lost" />
 
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="@string/location"
-        android:inputType="textPersonName" />
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="@string/found" />
 
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_margin="20dp"
-        android:gravity="start|top"
-        android:hint="@string/description"
-        android:inputType="textMultiLine" />
+            </RadioGroup>
 
-    <Button
-        android:id="@+id/buttonFound"
-        android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:layout_margin="20dp"
-        android:background="#F4282D"
-        android:text="@string/submit"
-        android:textColor="#F2F2F2" />
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:hint="@string/location"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:hint="@string/category"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/buttonFound"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_margin="20dp"
+                android:background="#F4282D"
+                android:text="@string/submit"
+                android:textColor="#F2F2F2" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
