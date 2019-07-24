@@ -2,12 +2,16 @@ package com.example.findex;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FoundItemDetailActivity extends AppCompatActivity {
 
+    Button locationButton;
     TextView charName;
     ImageView imageView;
 
@@ -20,6 +24,11 @@ public class FoundItemDetailActivity extends AppCompatActivity {
 
         String charVal = getIntent().getStringExtra("title");
         charName.setText(charVal);
+
+
+
+
+
         /*
         Adding dummy images and hardcoding images for demo.
          */
@@ -51,5 +60,18 @@ public class FoundItemDetailActivity extends AppCompatActivity {
             imageView.setImageResource(R.drawable.charger);
         }
 
+        locationButton = findViewById(R.id.claimButton);
+
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLocation();
+            }
+        });
+    }
+
+    public void openLocation(){
+        Intent intent = new Intent(this, LocationActivity.class);
+        startActivity(intent);
     }
 }
