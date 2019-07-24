@@ -11,19 +11,28 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/desription1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imagebutton"
                 android:layout_width="match_parent"
-                android:layout_height="77dp"
+                android:layout_height="97dp"
+                android:scaleType="centerCrop"
                 android:layout_margin="20dp"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
+            <Button
+                android:id="@+id/uploadImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20px"
+                android:text="Upload" />
+
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/itemTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -32,7 +41,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="105dp"
                 android:layout_margin="20dp"
@@ -40,30 +49,8 @@
                 android:hint="@string/description"
                 android:inputType="textMultiLine" />
 
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:layout_margin="20dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimary"
-                    android:text="@string/lost" />
-
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/colorPrimary"
-                    android:text="@string/found" />
-
-            </RadioGroup>
-
             <EditText
-                android:id="@+id/editText9"
+                android:id="@+id/itemLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
@@ -71,7 +58,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/itemCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
