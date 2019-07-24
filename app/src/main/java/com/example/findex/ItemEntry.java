@@ -140,7 +140,7 @@ public class ItemEntry extends AppCompatActivity {
         mDatabase.push().setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Intent intent = new Intent(ItemEntry.this, FoundItem.class);
+                Intent intent = new Intent(ItemEntry.this, FoundItemList.class);
                 startActivity(intent);
             }
         });
