@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +24,7 @@ import utils.FoundItem;
 public class FoundItemList extends AppCompatActivity {
 
     FloatingActionButton itemEntry;
+    FloatingActionButton logout;
     ListView foundListView;
     ArrayList<FoundItem> foundItems = new ArrayList<FoundItem>();
 
@@ -83,6 +85,17 @@ public class FoundItemList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openItemEntry();
+            }
+        });
+
+
+        logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(FoundItemList.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

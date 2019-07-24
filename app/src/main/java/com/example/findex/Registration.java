@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Registration extends AppCompatActivity {
 
@@ -21,9 +23,13 @@ public class Registration extends AppCompatActivity {
     private EditText userNameText , passwordText, confirmPasswordText;
     private FirebaseAuth authReference;
     private String usernameData, passwordData;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
@@ -43,13 +49,24 @@ public class Registration extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            openFoundList(currentUser);
+            Log.d("current user", currentUser.getEmail());
+        }
+    }
+
     private void registerUser() {
         authReference.createUserWithEmailAndPassword(usernameData, passwordData).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Registration Success", Toast.LENGTH_LONG).show();
-                    openFoundList();
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    Toast.makeText(getApplicationContext(),"Registration Success for: " +  mAuth.getCurrentUser(), Toast.LENGTH_LONG).show();
+                    openFoundList(currentUser);
                 }
                 else {
                     Toast.makeText(getApplicationContext(),"Registration is Unsuccessful", Toast.LENGTH_LONG).show();
@@ -58,8 +75,9 @@ public class Registration extends AppCompatActivity {
         });
     }
 
-    public void openFoundList(){
+    public void openFoundList(FirebaseUser currentUser){
         Intent intent = new Intent(this, FoundItemList.class);
+        intent.putExtra("useremail" , currentUser.getEmail());
         startActivity(intent);
     }
 

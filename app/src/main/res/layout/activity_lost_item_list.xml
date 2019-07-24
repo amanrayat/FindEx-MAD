@@ -18,7 +18,7 @@
         android:layout_marginBottom="1dp" />
 
     <Button
-        android:id="@+id/addButton2"
+        android:id="@+id/logout"
         android:layout_width="108dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"

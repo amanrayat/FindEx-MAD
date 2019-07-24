@@ -2,6 +2,7 @@ package com.example.findex;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 // AKA Login page
 public class MainActivity extends AppCompatActivity {
@@ -23,9 +25,12 @@ public class MainActivity extends AppCompatActivity {
     private EditText userNameText , passwordText;
     private FirebaseAuth authReference;
     private String usernameData, passwordData;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -58,6 +63,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            openFoundList(currentUser);
+            Log.d("current user", currentUser.getEmail());
+        }
+    }
+
     /**
      * This function is used to authenticate the user and change the intent.
      */
@@ -66,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    openFoundList();
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    openFoundList(currentUser);
                 }
                 else {
                     Toast.makeText(getApplicationContext(),"Login Failed - Use correct Username / Password", Toast.LENGTH_LONG).show();
@@ -76,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Function used in onCreate to open FoundList activity
-    public void openFoundList(){
+    public void openFoundList(FirebaseUser currentUser){
         Intent intent = new Intent(this, FoundItemList.class);
         startActivity(intent);
     }

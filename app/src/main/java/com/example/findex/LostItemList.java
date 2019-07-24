@@ -62,7 +62,7 @@ public class LostItemList extends AppCompatActivity {
             }
         });
 
-        itemEntry = findViewById(R.id.addButton2);
+        itemEntry = findViewById(R.id.logout);
         itemEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
