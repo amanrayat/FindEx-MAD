@@ -22,6 +22,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import utils.FoundItem;
+
 public class ItemEntry extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
@@ -135,6 +137,12 @@ public class ItemEntry extends AppCompatActivity {
      */
     private void writeNewItem(String title, String description, String location, String category, String url) {
         Item item = new Item(title, description,location,category,url);
-        mDatabase.push().setValue(item);
+        mDatabase.push().setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Intent intent = new Intent(ItemEntry.this, FoundItem.class);
+                startActivity(intent);
+            }
+        });
     }
 }
