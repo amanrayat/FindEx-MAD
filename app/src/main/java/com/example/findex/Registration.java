@@ -65,7 +65,7 @@ public class Registration extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser currentUser = mAuth.getCurrentUser();
-                    Toast.makeText(getApplicationContext(),"Registration Success for: " +  mAuth.getCurrentUser(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Registration Success for: " +  mAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
                     openFoundList(currentUser);
                 }
                 else {
