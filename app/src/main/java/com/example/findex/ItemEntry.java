@@ -8,10 +8,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,9 +32,11 @@ public class ItemEntry extends AppCompatActivity {
     private Button submit;
     private EditText title;
     private EditText description;
-    private EditText location;
+    private Spinner location;
     private Uri url;
-    private EditText category;
+    private Spinner category;
+    private Spinner myCategorySpinner;
+    private Spinner myLocationSpinner;
     private ImageButton imageButton;
     private Button button;
     private Uri imageUri;
@@ -43,6 +47,26 @@ public class ItemEntry extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_entry);
+
+        /*
+        Creation of location spinner
+         */
+        myLocationSpinner = (Spinner) findViewById(R.id.locationSpinner);
+
+        ArrayAdapter<String> mySpinnerAdapter = new ArrayAdapter<String>(ItemEntry.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.locationList));
+        mySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myLocationSpinner.setAdapter(mySpinnerAdapter);
+
+        /*
+        Creation of category spinner
+         */
+        myCategorySpinner = (Spinner) findViewById(R.id.categorySpinner);
+        ArrayAdapter<String> mySpinnerAdapter2 = new ArrayAdapter<String>(ItemEntry.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.categoryList));
+        mySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myCategorySpinner.setAdapter(mySpinnerAdapter2);
+
 
         /*
         Initializing Firebase storage and Database;
@@ -56,8 +80,8 @@ public class ItemEntry extends AppCompatActivity {
         submit = findViewById(R.id.buttonFound);
         title = findViewById(R.id.itemTitle);
         description = findViewById(R.id.description);
-        location = findViewById(R.id.itemLocation);
-        category = findViewById(R.id.itemCategory);
+//        location = findViewById(R.id.itemLocation);
+//        category = findViewById(R.id.itemCategory);
         imageButton = findViewById(R.id.imagebutton);
         button = findViewById(R.id.uploadImage);
 
@@ -90,7 +114,7 @@ public class ItemEntry extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 writeNewItem(title.getText().toString(), description.getText().toString()
-                        , location.getText().toString(), category.getText().toString(),imageUri.toString());
+                        , location.getSelectedItem().toString(), category.getSelectedItem().toString(),imageUri.toString());
             }
         });
     }

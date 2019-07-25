@@ -47,32 +47,30 @@
                 android:layout_margin="20dp"
                 android:gravity="start|top"
                 android:hint="@string/description"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"/>
 
-            <EditText
-                android:id="@+id/itemLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="@string/location"
-                android:inputType="textPersonName" />
+            <Spinner
+                android:id="@+id/locationSpinner"
+                android:layout_width="380dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10sp" />
 
-            <EditText
-                android:id="@+id/itemCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="@string/category"
-                android:inputType="textPersonName" />
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="380dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10sp" />
 
             <Button
                 android:id="@+id/buttonFound"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_margin="20dp"
+                android:layout_margin="30dp"
                 android:background="#F4282D"
                 android:text="@string/submit"
                 android:textColor="#F2F2F2" />
+
         </LinearLayout>
     </ScrollView>
 
