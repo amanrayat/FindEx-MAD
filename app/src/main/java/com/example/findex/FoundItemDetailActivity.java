@@ -71,7 +71,7 @@ public class FoundItemDetailActivity extends AppCompatActivity {
     }
 
     public void openLocation(){
-        Intent intent = new Intent(this, LocationActivity.class);
+        Intent intent = new Intent(this, MapFragment.class);
         startActivity(intent);
     }
 }

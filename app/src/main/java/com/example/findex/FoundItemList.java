@@ -29,6 +29,8 @@ import java.util.Date;
 import utils.CustomFoundListAdapter;
 import utils.FoundItem;
 
+import static com.example.findex.LocationEnum.snell;
+
 public class FoundItemList extends AppCompatActivity {
 
     FloatingActionButton itemEntry;
@@ -43,36 +45,6 @@ public class FoundItemList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_item_list);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
-
-        //Spinner creation
-//        final Spinner mySpinner = (Spinner) findViewById(R.id.spinner1);
-
-        ArrayAdapter<String> mySpinnerAdapter = new ArrayAdapter<String>(FoundItemList.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.lists));
-        mySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        mySpinner.setAdapter(mySpinnerAdapter);
-
-
-//        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                String test = ((TextView) view).getText().toString();
-//                if(test.equals("Lost Items")){
-//                    mySpinner.setSelection(0);
-//                    Intent intent = new Intent(view.getContext(), LostItemList.class);
-//                    startActivity(intent);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-
 
         //List View
         foundListView = findViewById(R.id.myListView);
@@ -151,19 +123,4 @@ public class FoundItemList extends AppCompatActivity {
         startActivity(intent);
 
     }
-//    private void PopulateList(){
-////        Date date = new Date(0);
-////
-////        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
-////                "3d printing machines", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.iphone, "Iphone 6", "I found an Iphone at Snell", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.bottle, "Water Bottle", "Found this water bottle lying around in Curry", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.mouse, "Mouse", "Did found a Dell Mouse in CCIS Lab", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.keyboard, "Keyboard", "Apple wireless keyboard found in Snell First Floor", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.umbrella, "Umbrella", "Umbrella found", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.shoes, "Shoes", "Found a pair of shoes in changing room of marino", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.watch, "I Watch", "Found an Iwatch series 5 near water fountain in curry.", date));
-////        foundItems.add(new FoundItem((long) 1,R.drawable.charger, "MacBookPro Charger", "I Found this charger in RY256", date));
-////
-////    }
 }
