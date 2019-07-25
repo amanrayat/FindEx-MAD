@@ -15,10 +15,16 @@
     <string name="password2">Password</string>
     <string name="Confirm">Confirm Password</string>
     <string name="add">+</string>
-    <string-array name="lists">
-        <item>Found Items</item>
-        <item>Lost Items</item>
+    <string-array name="locationList">
+        <item>Drop Off Location</item>
+        <item>Khoury College</item>
+        <item>Snell Library</item>
+        <item>College of Science</item>
+        <item>College of Arts</item>
     </string-array>
     <string name="title_activity_location">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
