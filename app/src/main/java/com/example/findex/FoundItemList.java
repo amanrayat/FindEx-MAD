@@ -43,7 +43,6 @@ public class FoundItemList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_item_list);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.addChildEventListener(childEventListener);
 
 
 
@@ -111,6 +110,13 @@ public class FoundItemList extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mDatabase.addChildEventListener(childEventListener);
+    }
+
     ChildEventListener childEventListener = new ChildEventListener() {
 
         @Override
@@ -127,7 +133,7 @@ public class FoundItemList extends AppCompatActivity {
         @Override
         public void onChildRemoved(DataSnapshot dataSnapshot) {
             FoundItem item = dataSnapshot.getValue(FoundItem.class);
-            foundItems.add(new FoundItem(item.getId(),item.getimageUrl(), item.getTitle(), item.getDescription(), new Date(0)));
+            foundItems.remove(new FoundItem(item.getId(),item.getimageUrl(), item.getTitle(), item.getDescription(), new Date(0)));
         }
 
         @Override
