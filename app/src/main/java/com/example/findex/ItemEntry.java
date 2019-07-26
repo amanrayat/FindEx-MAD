@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,9 +37,6 @@ public class ItemEntry extends AppCompatActivity {
     private Button submit;
     private EditText title;
     private EditText description;
-    private Spinner location;
-    private Uri url;
-    private Spinner category;
     private Spinner myCategorySpinner;
     private Spinner myLocationSpinner;
     private ImageButton imageButton;
@@ -46,6 +44,8 @@ public class ItemEntry extends AppCompatActivity {
     private Uri imageUri;
     private StorageReference storageRootReference;
     private final int REQUEST_CODE = 1;
+    private LocationEnum locationEnum;
+    private CategoryEnum categoryEnum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +62,35 @@ public class ItemEntry extends AppCompatActivity {
         mySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         myLocationSpinner.setAdapter(mySpinnerAdapter);
 
-        /*
-        Creation of category spinner
-         */
+        myLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                locationEnum = LocationEnum.values()[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         myCategorySpinner = (Spinner) findViewById(R.id.categorySpinner);
         ArrayAdapter<String> mySpinnerAdapter2 = new ArrayAdapter<String>(ItemEntry.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.categoryList));
         mySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         myCategorySpinner.setAdapter(mySpinnerAdapter2);
 
+        myCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                categoryEnum = CategoryEnum.values()[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         /*
         Initializing Firebase storage and Database;
@@ -84,8 +104,6 @@ public class ItemEntry extends AppCompatActivity {
         submit = findViewById(R.id.buttonFound);
         title = findViewById(R.id.itemTitle);
         description = findViewById(R.id.description);
-//        location = findViewById(R.id.itemLocation);
-//        category = findViewById(R.id.itemCategory);
         imageButton = findViewById(R.id.imagebutton);
         button = findViewById(R.id.uploadImage);
 
@@ -117,8 +135,8 @@ public class ItemEntry extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                writeNewItem(title.getText().toString(), description.getText().toString()
-                        , location.getSelectedItem().toString(), category.getSelectedItem().toString(),imageUri.toString());
+                writeNewItem(title.getText().toString(), description.getText().toString(),
+                        locationEnum, categoryEnum,imageUri.toString());
             }
         });
     }
@@ -163,9 +181,9 @@ public class ItemEntry extends AppCompatActivity {
     /*
     Function to append data to the database.
      */
-    private void writeNewItem(String title, String description, String location, String category, String url) {
-        FoundItem item1 = new FoundItem(new Random().nextLong(), url, title, description, new Date(0));
-        Item item = new Item(title, description,location,category,url);
+    private void writeNewItem(String title, String description, LocationEnum location, CategoryEnum category, String url) {
+        FoundItem item1 = new FoundItem(new Random().nextLong(), url, title, description,category,location, new Date(0));
+//        Item item = new Item(title, description,location,category,url);
         mDatabase.push().setValue(item1).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

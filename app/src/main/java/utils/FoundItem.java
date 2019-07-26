@@ -16,7 +16,7 @@ public class FoundItem {
     // Add an enum for a place
     // Add enum for category
 
-    public FoundItem(Long id, int imageResID, String title, String description, CategoryEnum category,
+    public FoundItem(Long id, String imageUrl, String title, String description, CategoryEnum category,
                      LocationEnum location, Date date) {
         this.id = id;
         this.imageUrl = imageUrl;

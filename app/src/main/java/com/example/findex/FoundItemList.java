@@ -5,11 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +17,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EventListener;
 
 import utils.CustomFoundListAdapter;
 import utils.FoundItem;
-
-import static com.example.findex.LocationEnum.snell;
 
 public class FoundItemList extends AppCompatActivity {
 
@@ -42,16 +35,17 @@ public class FoundItemList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.addChildEventListener(childEventListener);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_item_list);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
 
         //List View
         foundListView = findViewById(R.id.myListView);
-//        PopulateList();
         CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
         foundListView.setAdapter(myAdapter);
-
 
         // Will add item description page based on item id.
         foundListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -86,7 +80,6 @@ public class FoundItemList extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mDatabase.addChildEventListener(childEventListener);
     }
 
     ChildEventListener childEventListener = new ChildEventListener() {
@@ -95,7 +88,7 @@ public class FoundItemList extends AppCompatActivity {
         public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
             Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
             FoundItem item = dataSnapshot.getValue(FoundItem.class);
-            foundItems.add(new FoundItem(item.getId(),item.getimageUrl(), item.getTitle(), item.getDescription(), new Date(0)));
+            foundItems.add(item);
         }
 
         @Override
@@ -104,8 +97,7 @@ public class FoundItemList extends AppCompatActivity {
 
         @Override
         public void onChildRemoved(DataSnapshot dataSnapshot) {
-            FoundItem item = dataSnapshot.getValue(FoundItem.class);
-            foundItems.remove(new FoundItem(item.getId(),item.getimageUrl(), item.getTitle(), item.getDescription(), new Date(0)));
+            Log.d("Child removed", dataSnapshot.getKey());
         }
 
         @Override
