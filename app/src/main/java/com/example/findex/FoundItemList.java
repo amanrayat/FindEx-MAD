@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.EventListener;
+import java.util.List;
 
 import utils.CustomFoundListAdapter;
 import utils.FoundItem;
@@ -32,6 +33,9 @@ public class FoundItemList extends AppCompatActivity {
     private DatabaseReference mDatabase;
     ArrayList<FoundItem> foundItems = new ArrayList<FoundItem>();
     String TAG = "debug";
+    CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
+    List<String> keyList = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,6 @@ public class FoundItemList extends AppCompatActivity {
 
         //List View
         foundListView = findViewById(R.id.myListView);
-        CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
         foundListView.setAdapter(myAdapter);
 
         // Will add item description page based on item id.
@@ -89,6 +92,8 @@ public class FoundItemList extends AppCompatActivity {
             Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
             FoundItem item = dataSnapshot.getValue(FoundItem.class);
             foundItems.add(item);
+            keyList.add(dataSnapshot.getKey());
+            myAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -97,7 +102,10 @@ public class FoundItemList extends AppCompatActivity {
 
         @Override
         public void onChildRemoved(DataSnapshot dataSnapshot) {
-            Log.d("Child removed", dataSnapshot.getKey());
+            int index = keyList.indexOf(dataSnapshot.getKey());
+            foundItems.remove(index);
+            keyList.remove(index);
+            myAdapter.notifyDataSetChanged();
         }
 
         @Override
