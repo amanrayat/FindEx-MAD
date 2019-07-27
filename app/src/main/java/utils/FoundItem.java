@@ -2,13 +2,12 @@ package utils;
 
 import com.example.findex.CategoryEnum;
 import com.example.findex.LocationEnum;
-
 import java.util.Date;
 import java.util.Locale;
 
 public class FoundItem {
     Long id;
-    int imageResID;
+    String imageUrl;
     String title;
     String description;
     Date date;
@@ -17,10 +16,10 @@ public class FoundItem {
     // Add an enum for a place
     // Add enum for category
 
-    public FoundItem(Long id, int imageResID, String title, String description, CategoryEnum category,
+    public FoundItem(Long id, String imageUrl, String title, String description, CategoryEnum category,
                      LocationEnum location, Date date) {
         this.id = id;
-        this.imageResID = imageResID;
+        this.imageUrl = imageUrl;
         this.title = title;
         this.description = description;
         this.category = category;
@@ -28,6 +27,8 @@ public class FoundItem {
         this.date = date;
     }
 
+    public FoundItem() {
+    }
     public LocationEnum getLocation() {
         return location;
     }
@@ -51,12 +52,12 @@ public class FoundItem {
         this.id = id;
     }
 
-    public int getImageResID() {
-        return imageResID;
+    public String getimageUrl() {
+        return imageUrl;
     }
 
-    public void setImageResID(int imageResID) {
-        this.imageResID = imageResID;
+    public void setimageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getTitle() {
@@ -82,10 +83,6 @@ public class FoundItem {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
-
-
 }
 
 

@@ -2,45 +2,53 @@ package com.example.findex;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EventListener;
+import java.util.List;
 
 import utils.CustomFoundListAdapter;
 import utils.FoundItem;
-
-import static com.example.findex.LocationEnum.snell;
 
 public class FoundItemList extends AppCompatActivity {
 
     FloatingActionButton itemEntry;
     FloatingActionButton logout;
     ListView foundListView;
+    private DatabaseReference mDatabase;
     ArrayList<FoundItem> foundItems = new ArrayList<FoundItem>();
+    String TAG = "debug";
+    CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
+    List<String> keyList = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.addChildEventListener(childEventListener);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_item_list);
 
+
+
         //List View
         foundListView = findViewById(R.id.myListView);
-        PopulateList();
-        CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
         foundListView.setAdapter(myAdapter);
-
 
         // Will add item description page based on item id.
         foundListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,26 +80,47 @@ public class FoundItemList extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    ChildEventListener childEventListener = new ChildEventListener() {
+
+        @Override
+        public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+            Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
+            FoundItem item = dataSnapshot.getValue(FoundItem.class);
+            foundItems.add(item);
+            keyList.add(dataSnapshot.getKey());
+            myAdapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+        }
+
+        @Override
+        public void onChildRemoved(DataSnapshot dataSnapshot) {
+            int index = keyList.indexOf(dataSnapshot.getKey());
+            foundItems.remove(index);
+            keyList.remove(index);
+            myAdapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+            Log.w(TAG, "postComments:onCancelled", databaseError.toException());
+            Toast.makeText(getApplicationContext(),"Registration is Unsuccessful", Toast.LENGTH_LONG).show();
+        }
+    };
     private void openItemEntry(){
         Intent intent = new Intent(this, ItemEntry.class);
         startActivity(intent);
-
-    }
-    private void PopulateList(){
-        Date date = new Date(0);
-        LocationEnum location = snell;
-        CategoryEnum category = CategoryEnum.phone;
-
-        foundItems.add(new FoundItem((long) 1,R.drawable.macbooktestimage, "MacBookPro", "This is a macbook pro. I found this item in snell on the second floor near the " +
-                "3d printing machines",category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.iphone, "Iphone 6", "I found an Iphone at Snell",category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.bottle, "Water Bottle", "Found this water bottle lying around in Curry",category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.mouse, "Mouse", "Did found a Dell Mouse in CCIS Lab",category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.keyboard, "Keyboard", "Apple wireless keyboard found in Snell First Floor", category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.umbrella, "Umbrella", "Umbrella found",category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.shoes, "Shoes", "Found a pair of shoes in changing room of marino",category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.watch, "I Watch", "Found an Iwatch series 5 near water fountain in curry.", category, location, date));
-        foundItems.add(new FoundItem((long) 1,R.drawable.charger, "MacBookPro Charger", "I Found this charger in RY256",category, location, date));
 
     }
 }
