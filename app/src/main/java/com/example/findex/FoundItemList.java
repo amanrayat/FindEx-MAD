@@ -18,8 +18,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.EventListener;
 import java.util.List;
 
 import utils.CustomFoundListAdapter;
@@ -43,8 +41,6 @@ public class FoundItemList extends AppCompatActivity {
         mDatabase.addChildEventListener(childEventListener);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_item_list);
-
-
 
         //List View
         foundListView = findViewById(R.id.myListView);
@@ -78,11 +74,6 @@ public class FoundItemList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 
     ChildEventListener childEventListener = new ChildEventListener() {
