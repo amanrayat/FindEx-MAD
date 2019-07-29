@@ -6,8 +6,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,6 +20,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +34,7 @@ public class FoundItemList extends AppCompatActivity {
     FloatingActionButton logout;
     ListView foundListView;
     private DatabaseReference mDatabase;
+    private SearchView searchBar;
     ArrayList<FoundItem> foundItems = new ArrayList<FoundItem>();
     String TAG = "debug";
     CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
@@ -44,6 +50,7 @@ public class FoundItemList extends AppCompatActivity {
 
         //List View
         foundListView = findViewById(R.id.myListView);
+        searchBar = findViewById(R.id.searchBar);
         foundListView.setAdapter(myAdapter);
 
         // Will add item description page based on item id.
@@ -55,6 +62,24 @@ public class FoundItemList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Query query = mDatabase.orderByChild("title").startAt(searchBar.getQuery().toString()).endAt(searchBar.getQuery().toString() + "\uf8ff");
+                foundItems.clear();
+                query.addChildEventListener(childEventListener2);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                foundItems.clear();
+                mDatabase.addChildEventListener(childEventListener);
+                return false;
+            }
+        });
+
 
         itemEntry = findViewById(R.id.addButton);
         itemEntry.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +100,36 @@ public class FoundItemList extends AppCompatActivity {
             }
         });
     }
+    ChildEventListener childEventListener2 = new ChildEventListener() {
+        @Override
+        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
+            FoundItem item = dataSnapshot.getValue(FoundItem.class);
+            foundItems.add(item);
+            keyList.add(dataSnapshot.getKey());
+            myAdapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+        }
+
+        @Override
+        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override
+        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
 
     ChildEventListener childEventListener = new ChildEventListener() {
 
