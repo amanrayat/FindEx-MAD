@@ -13,11 +13,12 @@ public class FoundItem {
     Date date;
     LocationEnum location;
     CategoryEnum category;
+    String reportedByEmail;
     // Add an enum for a place
     // Add enum for category
 
     public FoundItem(Long id, String imageUrl, String title, String description, CategoryEnum category,
-                     LocationEnum location, Date date) {
+                     LocationEnum location, Date date, String reportedByEmail) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.title = title;
@@ -25,10 +26,20 @@ public class FoundItem {
         this.category = category;
         this.location = location;
         this.date = date;
+        this.reportedByEmail = reportedByEmail;
     }
 
     public FoundItem() {
     }
+
+    public String getReportedByEmail() {
+        return reportedByEmail;
+    }
+
+    public void setReportedByEmail(String reportedByEmail) {
+        this.reportedByEmail = reportedByEmail;
+    }
+
     public LocationEnum getLocation() {
         return location;
     }

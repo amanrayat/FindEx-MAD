@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -46,10 +48,12 @@ public class ItemEntry extends AppCompatActivity {
     private final int REQUEST_CODE = 1;
     private LocationEnum locationEnum;
     private CategoryEnum categoryEnum;
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+
         setContentView(R.layout.item_entry);
 
         /*
@@ -182,8 +186,8 @@ public class ItemEntry extends AppCompatActivity {
     Function to append data to the database.
      */
     private void writeNewItem(String title, String description, LocationEnum location, CategoryEnum category, String url) {
-        FoundItem item1 = new FoundItem(new Random().nextLong(), url, title, description,category,location, new Date(0));
-//        Item item = new Item(title, description,location,category,url);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FoundItem item1 = new FoundItem(new Random().nextLong(), url, title, description,category,location, new Date(),currentUser.getEmail() );
         mDatabase.push().setValue(item1).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
