@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private SignInButton login;
     private FirebaseAuth authReference;
     private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
     GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "SignInActivity";
@@ -57,9 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
         // When "login" button is clicked, move to FoundList activity
         login = findViewById(R.id.sign_in_button);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 signIn();
             }
         });
@@ -87,12 +92,14 @@ public class MainActivity extends AppCompatActivity {
                             new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    progressBar.setVisibility(View.GONE);
                                     Toast.makeText(getApplicationContext(),"Use the husky id.", Toast.LENGTH_LONG).show();
                                 }
                             });
                 }
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
+                progressBar.setVisibility(View.GONE);
             }
         }
     }
@@ -108,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            progressBar.setVisibility(View.GONE);
                             openFoundList(user);
                             Toast.makeText(getApplicationContext(),"Signed In as " + user.getEmail(), Toast.LENGTH_LONG).show();
                         } else {

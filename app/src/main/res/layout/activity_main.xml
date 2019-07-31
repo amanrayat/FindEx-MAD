@@ -32,6 +32,16 @@
         android:text="Welcome To FindEx. Sign In to Continue"
         android:textColor="#F4282D" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="#F4282D"
+        android:background="#00EB0505"
+        android:elevation="10dp"
+        android:progressTint="#D32F2F" />
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="200dp"
@@ -40,4 +50,5 @@
         android:layout_margin="10dp"
         android:foregroundGravity="center"
         android:textAlignment="center" />
+
 </LinearLayout>
