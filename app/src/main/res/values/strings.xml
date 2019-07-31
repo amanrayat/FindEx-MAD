@@ -14,6 +14,8 @@
     <string name="schoolEmail">NEU Email</string>
     <string name="password2">Password</string>
     <string name="Confirm">Confirm Password</string>
+    <string name="default_web_client_id2" translatable="false">730406173344-c75pgbpedq93kl9ggvmqoimuc6ui2gak.apps.googleusercontent.com</string>
+    <!--<string name="default_web_client_id">881553620314-37v2in115d6uarpj3gekskt1hsbvnquo.apps.googleusercontent.com</string>-->
     <string name="add">+</string>
     <string-array name="locationList">
         <item>Location</item>

@@ -13,6 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -38,6 +43,7 @@ public class FoundItemList extends AppCompatActivity {
     ArrayList<FoundItem> foundItems = new ArrayList<FoundItem>();
     String TAG = "debug";
     CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
+    GoogleSignInClient mGoogleSignInClient;
     List<String> keyList = new ArrayList<String>();
 
 
@@ -47,6 +53,14 @@ public class FoundItemList extends AppCompatActivity {
         mDatabase.addChildEventListener(childEventListener);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_item_list);
+
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id2))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         //List View
         foundListView = findViewById(R.id.myListView);
@@ -95,8 +109,15 @@ public class FoundItemList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(FoundItemList.this, MainActivity.class);
-                startActivity(intent);
+                mGoogleSignInClient.signOut().addOnCompleteListener(
+                        new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Intent intent = new Intent(FoundItemList.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+
             }
         });
     }
