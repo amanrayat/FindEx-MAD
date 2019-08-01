@@ -76,6 +76,16 @@
                 android:background="#F4282D"
                 android:text="Get Location"
                 android:textColor="#F2F2F2" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="#F4282D"
+                android:text="Delete"
+                android:textColor="#F2F2F2" />
+
         </LinearLayout>
     </ScrollView>
 

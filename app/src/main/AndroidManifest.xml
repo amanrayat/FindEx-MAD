@@ -34,7 +34,8 @@
         <activity android:name=".Registration" />
         <activity android:name=".ItemEntry" />
         <activity android:name=".FoundItemDetailActivity" />
-        <activity android:name=".FoundItemList" />
+        <activity android:name=".FoundItemList"
+            />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

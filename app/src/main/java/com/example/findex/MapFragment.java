@@ -46,4 +46,5 @@ public class MapFragment extends FragmentActivity implements OnMapReadyCallback 
                 .build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
+
 }

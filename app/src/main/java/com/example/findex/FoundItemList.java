@@ -3,11 +3,16 @@ package com.example.findex;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,8 +40,9 @@ import utils.FoundItem;
 
 public class FoundItemList extends AppCompatActivity {
 
+    Toolbar toolbar;
     FloatingActionButton itemEntry;
-    FloatingActionButton logout;
+    ImageButton logout;
     ListView foundListView;
     private DatabaseReference mDatabase;
     private SearchView searchBar;
@@ -46,6 +52,13 @@ public class FoundItemList extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     List<String> keyList = new ArrayList<String>();
 
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu){
+//        MenuInflater inflates = getMenuInflater();
+//        inflates.inflate(R.menu.logoutmenu, menu);
+//        return true;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +117,7 @@ public class FoundItemList extends AppCompatActivity {
         });
 
 
-        logout = findViewById(R.id.logout);
+        logout = (ImageButton) findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,4 +203,5 @@ public class FoundItemList extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 }
