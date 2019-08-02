@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.findex.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class CustomFoundListAdapter extends BaseAdapter {
@@ -53,9 +55,10 @@ public class CustomFoundListAdapter extends BaseAdapter {
         else{
             viewHolder = (ViewHolder) view.getTag();
         }
+        DateFormat df2 = new SimpleDateFormat("EEE, MMM d, ''yy");
         Picasso.get().load(foundItems.get(i).getimageUrl()).into(viewHolder.imageView);
         viewHolder.titleView.setText(foundItems.get(i).getTitle());
-        viewHolder.descriptionView.setText(foundItems.get(i).getDescription());
+        viewHolder.descriptionView.setText(df2.format(foundItems.get(i).getDate()));
         return view;
     }
     static class ViewHolder {

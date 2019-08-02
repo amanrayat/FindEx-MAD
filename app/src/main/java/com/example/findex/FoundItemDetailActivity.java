@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import utils.FoundItem;
 
@@ -39,6 +43,7 @@ public class FoundItemDetailActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     private Button deleteButton;
+    private String itemKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,24 +81,33 @@ public class FoundItemDetailActivity extends AppCompatActivity {
     ChildEventListener childEventListener = new ChildEventListener() {
         @Override
         public void onChildAdded(@NonNull final DataSnapshot dataSnapshot, @Nullable String s) {
+            itemKey = dataSnapshot.getKey();
             final FoundItem item = dataSnapshot.getValue(FoundItem.class);
             charName.setText(item.getTitle().toUpperCase());
             description.setText(item.getDescription());
             Picasso.get().load(item.getimageUrl()).into(imageView);
-            dateFound.setText(item.getDate().toString());
+            DateFormat df2 = new SimpleDateFormat("EEE, MMM d, ''yy");
+
+            dateFound.setText(df2.format(item.getDate()));
             reportedByText.setText("Reported By: " + item.getReportedByEmail());
 
             if(!(mAuth.getCurrentUser().getEmail().equals(item.getReportedByEmail()))){
                 deleteButton.setVisibility(View.GONE);
             }
 //
-//            deleteButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    DatabaseReference delete = FirebaseDatabase.getInstance().getReference("findex-1562652361242").child(item.getId().toString());
-//                    delete.removeValue();
-//                }
-//            });
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DatabaseReference delete = FirebaseDatabase.getInstance().getReference().child(itemKey);
+                    delete.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Intent intent = new Intent(FoundItemDetailActivity.this, FoundItemList.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
+            });
         }
 
         @Override

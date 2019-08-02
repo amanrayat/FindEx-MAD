@@ -42,7 +42,6 @@ public class ItemEntry extends AppCompatActivity {
     private Spinner myCategorySpinner;
     private Spinner myLocationSpinner;
     private ImageButton imageButton;
-    private Button button;
     private Uri imageUri;
     private StorageReference storageRootReference;
     private final int REQUEST_CODE = 1;
@@ -109,7 +108,6 @@ public class ItemEntry extends AppCompatActivity {
         title = findViewById(R.id.itemTitle);
         description = findViewById(R.id.description);
         imageButton = findViewById(R.id.imagebutton);
-        button = findViewById(R.id.uploadImage);
 
         /*
         Image Upload Click Listener
@@ -120,16 +118,6 @@ public class ItemEntry extends AppCompatActivity {
                 Intent impIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 impIntent.setType("image/*");
                 startActivityForResult(impIntent,REQUEST_CODE);
-            }
-        });
-
-        /*
-        Upload image to FireBase storage click listener
-         */
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                uploadImageToStorage();
             }
         });
 
@@ -154,6 +142,7 @@ public class ItemEntry extends AppCompatActivity {
         if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
             imageUri = data.getData();
             imageButton.setImageURI(imageUri);
+            uploadImageToStorage();
         }
     }
 

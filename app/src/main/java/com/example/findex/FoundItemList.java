@@ -3,11 +3,8 @@ package com.example.findex;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -33,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import utils.CustomFoundListAdapter;
@@ -63,6 +61,7 @@ public class FoundItemList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.orderByChild("date");
         mDatabase.addChildEventListener(childEventListener);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_item_list);
@@ -141,6 +140,9 @@ public class FoundItemList extends AppCompatActivity {
             FoundItem item = dataSnapshot.getValue(FoundItem.class);
             foundItems.add(item);
             keyList.add(dataSnapshot.getKey());
+
+            Collections.reverse(foundItems);
+            Collections.reverse(keyList);
             myAdapter.notifyDataSetChanged();
         }
 
@@ -173,6 +175,9 @@ public class FoundItemList extends AppCompatActivity {
             FoundItem item = dataSnapshot.getValue(FoundItem.class);
             foundItems.add(item);
             keyList.add(dataSnapshot.getKey());
+
+            Collections.reverse(foundItems);
+            Collections.reverse(keyList);
             myAdapter.notifyDataSetChanged();
         }
 

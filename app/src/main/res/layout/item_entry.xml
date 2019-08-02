@@ -19,17 +19,10 @@
             <ImageButton
                 android:id="@+id/imagebutton"
                 android:layout_width="match_parent"
-                android:layout_height="97dp"
-                android:scaleType="centerCrop"
+                android:layout_height="125dp"
                 android:layout_margin="20dp"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
-
-            <Button
-                android:id="@+id/uploadImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20px"
-                android:text="Upload" />
 
             <EditText
                 android:id="@+id/itemTitle"
