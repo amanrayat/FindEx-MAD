@@ -3,6 +3,8 @@ package com.example.findex;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -38,7 +40,6 @@ import utils.FoundItem;
 
 public class FoundItemList extends AppCompatActivity {
 
-    Toolbar toolbar;
     FloatingActionButton itemEntry;
     ImageButton logout;
     ListView foundListView;
@@ -50,13 +51,6 @@ public class FoundItemList extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     List<String> keyList = new ArrayList<String>();
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu){
-//        MenuInflater inflates = getMenuInflater();
-//        inflates.inflate(R.menu.logoutmenu, menu);
-//        return true;
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

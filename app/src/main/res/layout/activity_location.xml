@@ -9,7 +9,7 @@ tools:context=".MainActivity">
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/buildingLocation"
         android:layout_width="300dp"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
@@ -18,10 +18,10 @@ tools:context=".MainActivity">
         android:layout_marginBottom="180dp"
         android:textSize="24dp"
         android:textColor="@color/colorAccent"
-        android:text="Building: West Village H" />
+        android:text="Building: COMING SOON" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/roomLocation"
         android:layout_width="300dp"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
@@ -30,10 +30,10 @@ tools:context=".MainActivity">
         android:layout_marginBottom="130dp"
         android:textSize="24dp"
         android:textColor="@color/colorAccent"
-        android:text="Room: 202" />
+        android:text="Room: COMING SOON" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/hoursLocation"
         android:layout_width="300dp"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
@@ -42,10 +42,10 @@ tools:context=".MainActivity">
         android:layout_marginBottom="80dp"
         android:textSize="24dp"
         android:textColor="@color/colorAccent"
-        android:text="Hours: 6:00am - 4:00pm" />
+        android:text="Hours: COMING SOON" />
 
     <TextView
-        android:id="@+id/reportedByText"
+        android:id="@+id/phoneNumber"
         android:layout_width="300dp"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
@@ -54,7 +54,7 @@ tools:context=".MainActivity">
         android:layout_marginBottom="30dp"
         android:textSize="24dp"
         android:textColor="@color/colorAccent"
-        android:text="Phone: (555) 212 - 4212" />
+        android:text="Phone: COMING SOON" />
 
 
     <fragment

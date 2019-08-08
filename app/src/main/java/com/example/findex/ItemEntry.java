@@ -37,6 +37,7 @@ public class ItemEntry extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private Button submit;
+    private Button allLocationButton;
     private EditText title;
     private EditText description;
     private Spinner myCategorySpinner;
@@ -108,7 +109,17 @@ public class ItemEntry extends AppCompatActivity {
         title = findViewById(R.id.itemTitle);
         description = findViewById(R.id.description);
         imageButton = findViewById(R.id.imagebutton);
+        allLocationButton = findViewById(R.id.allLocationButton);
 
+
+        allLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ItemEntry.this, FullMap.class);
+
+                startActivity(intent);
+            }
+        });
         /*
         Image Upload Click Listener
          */
@@ -146,6 +157,7 @@ public class ItemEntry extends AppCompatActivity {
         }
     }
 
+    
     /*
     Function to upload the image to Firebase Storage.
      */

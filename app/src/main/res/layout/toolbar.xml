@@ -14,11 +14,11 @@
         android:layout_height="40dp"
         android:layout_marginTop="0dp"
         android:backgroundTint="@color/colorAccent"/>
+
     <ImageButton
         android:id="@+id/logout"
         android:layout_width="50dp"
         android:layout_height="50dp"
-
         android:src="@drawable/ic_power_settings_new_black_24dp"
         android:layout_marginStart="150dp"
         android:background="#00000000"

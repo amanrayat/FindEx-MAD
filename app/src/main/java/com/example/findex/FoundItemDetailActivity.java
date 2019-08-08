@@ -67,12 +67,7 @@ public class FoundItemDetailActivity extends AppCompatActivity {
         locationButton = findViewById(R.id.claimButton);
         deleteButton = findViewById(R.id.deleteButton);
 
-        locationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openLocation();
-            }
-        });
+
 
 
     }
@@ -108,6 +103,14 @@ public class FoundItemDetailActivity extends AppCompatActivity {
                     });
                 }
             });
+
+            locationButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println(item.getLocation().toString());
+                    openLocation(item.getLocation().toString());
+                }
+            });
         }
 
         @Override
@@ -131,8 +134,9 @@ public class FoundItemDetailActivity extends AppCompatActivity {
         }
     };
 
-    public void openLocation(){
+    public void openLocation(String location){
         Intent intent = new Intent(this, MapFragment.class);
+        intent.putExtra("location" , location);
         startActivity(intent);
     }
 }

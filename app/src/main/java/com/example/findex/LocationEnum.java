@@ -2,5 +2,5 @@ package com.example.findex;
 
 public enum LocationEnum
 {
-    khoury,snell,cos
+    empty,khoury,snell,curry,marino
 }
