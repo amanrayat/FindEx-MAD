@@ -41,30 +41,33 @@
 
                 <EditText
                     android:id="@+id/description"
-                    android:layout_width="370dp"
-                    android:layout_height="105dp"
-                    android:layout_alignParentEnd="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="22dp"
-                    android:layout_marginBottom="301dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="323dp"
                     android:gravity="start|top"
                     android:hint="@string/description"
                     android:inputType="textMultiLine" />
 
                 <Spinner
                     android:id="@+id/locationSpinner"
-                    android:layout_width="305dp"
-                    android:layout_height="40dp"
+                    android:layout_width="302dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginBottom="235dp" />
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="233dp" />
 
                 <Spinner
                     android:id="@+id/categorySpinner"
-                    android:layout_width="380dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20sp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="173dp" />
 
@@ -83,12 +86,12 @@
 
                 <Button
                     android:id="@+id/allLocationButton"
-                    android:layout_width="61dp"
+                    android:layout_width="59dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="22dp"
-                    android:layout_marginBottom="232dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="230dp"
                     android:text="?" />
             </RelativeLayout>
         </LinearLayout>

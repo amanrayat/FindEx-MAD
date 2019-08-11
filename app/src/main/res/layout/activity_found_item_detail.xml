@@ -44,8 +44,7 @@
                 android:layout_height="240dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/macbooktestimage" />
+                android:layout_marginEnd="10dp" />
 
             <TextView
                 android:id="@+id/description"
@@ -65,7 +64,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
-                android:text="Reported By: Aman Rayat"
                 android:textStyle="italic" />
 
             <Button
@@ -74,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="#F4282D"
-                android:text="Get Location"
+                android:text="@string/get_location"
                 android:textColor="#F2F2F2" />
 
             <Button
@@ -83,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="#F4282D"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:textColor="#F2F2F2" />
 
         </LinearLayout>

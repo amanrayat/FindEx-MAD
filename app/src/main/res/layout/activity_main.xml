@@ -29,7 +29,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="60dp"
         android:gravity="center"
-        android:text="Welcome To FindEx. Sign In to Continue"
+        android:text="@string/welcome_to_findex_sign_in_to_continue"
         android:textColor="#F4282D" />
 
     <ProgressBar

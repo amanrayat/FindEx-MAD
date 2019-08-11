@@ -10,51 +10,47 @@ tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/buildingLocation"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="53dp"
         android:layout_marginBottom="180dp"
+        android:layout_marginStart="20dp"
         android:textSize="24dp"
-        android:textColor="@color/colorAccent"
-        android:text="Building: COMING SOON" />
-
-    <TextView
-        android:id="@+id/roomLocation"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="130dp"
-        android:textSize="24dp"
-        android:textColor="@color/colorAccent"
-        android:text="Room: COMING SOON" />
+        android:textColor="@color/colorAccent" />
 
     <TextView
         android:id="@+id/hoursLocation"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="130dp"
         android:textSize="24dp"
-        android:textColor="@color/colorAccent"
-        android:text="Hours: COMING SOON" />
+        android:layout_marginStart="20dp"
+        android:textColor="@color/colorAccent" />
 
     <TextView
         android:id="@+id/phoneNumber"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="80dp"
+        android:textSize="24dp"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/roomLocation"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
         android:textSize="24dp"
-        android:textColor="@color/colorAccent"
-        android:text="Phone: COMING SOON" />
+        android:layout_marginStart="20dp"
+        android:textColor="@color/colorAccent" />
 
 
     <fragment

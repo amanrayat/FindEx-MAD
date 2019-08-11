@@ -1,5 +1,6 @@
 package com.example.findex;
 
 public enum CategoryEnum {
-    phone, tablet, computer, charger, book
+    empty, phone, computer, charger, book, other
+
 }

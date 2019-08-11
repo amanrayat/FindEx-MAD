@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,8 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
 
@@ -36,12 +33,8 @@ import utils.FoundItem;
 public class ItemEntry extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-    private Button submit;
-    private Button allLocationButton;
     private EditText title;
     private EditText description;
-    private Spinner myCategorySpinner;
-    private Spinner myLocationSpinner;
     private ImageButton imageButton;
     private Uri imageUri;
     private StorageReference storageRootReference;
@@ -59,7 +52,7 @@ public class ItemEntry extends AppCompatActivity {
         /*
         Creation of location spinner
          */
-        myLocationSpinner = (Spinner) findViewById(R.id.locationSpinner);
+        Spinner myLocationSpinner = findViewById(R.id.locationSpinner);
 
         ArrayAdapter<String> mySpinnerAdapter = new ArrayAdapter<String>(ItemEntry.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.locationList));
@@ -78,8 +71,8 @@ public class ItemEntry extends AppCompatActivity {
             }
         });
 
-        myCategorySpinner = (Spinner) findViewById(R.id.categorySpinner);
-        ArrayAdapter<String> mySpinnerAdapter2 = new ArrayAdapter<String>(ItemEntry.this,
+        Spinner myCategorySpinner = findViewById(R.id.categorySpinner);
+        ArrayAdapter<String> mySpinnerAdapter2 = new ArrayAdapter<>(ItemEntry.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.categoryList));
         mySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         myCategorySpinner.setAdapter(mySpinnerAdapter2);
@@ -105,11 +98,11 @@ public class ItemEntry extends AppCompatActivity {
         /*
         Getting reference for UI components
          */
-        submit = findViewById(R.id.buttonFound);
+        Button submit = findViewById(R.id.buttonFound);
         title = findViewById(R.id.itemTitle);
         description = findViewById(R.id.description);
         imageButton = findViewById(R.id.imagebutton);
-        allLocationButton = findViewById(R.id.allLocationButton);
+        Button allLocationButton = findViewById(R.id.allLocationButton);
 
 
         allLocationButton.setOnClickListener(new View.OnClickListener() {
@@ -138,10 +131,19 @@ public class ItemEntry extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                writeNewItem(title.getText().toString(), description.getText().toString(),
-                        locationEnum, categoryEnum,imageUri.toString());
+                if (!(title.getText().toString().equals("") || locationEnum.toString().equals("empty") || imageUri == null)) {
+                    writeNewItem(title.getText().toString(), description.getText().toString(),
+                            locationEnum, categoryEnum, imageUri.toString());
+
+                    System.out.println("Final Test" + imageUri.toString());
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Must have image, title and location", Toast.LENGTH_SHORT).show();
+                    System.out.println("Final Test" + imageUri);
+                }
             }
         });
+
     }
 
     /*

@@ -16,7 +16,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -31,11 +30,8 @@ import java.util.regex.Pattern;
 // AKA Login page
 public class MainActivity extends AppCompatActivity {
 
-    private SignInButton login;
-    private FirebaseAuth authReference;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
-    GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "SignInActivity";
 
@@ -55,10 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        authReference = FirebaseAuth.getInstance();
-
         // When "login" button is clicked, move to FoundList activity
-        login = findViewById(R.id.sign_in_button);
+        SignInButton login = findViewById(R.id.sign_in_button);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         login.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return false;
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

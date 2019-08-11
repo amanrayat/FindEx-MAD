@@ -20,9 +20,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class FullMap extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
-    private GoogleMap mMap;
-
     private static final int PERMISSION_LOCATION = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,37 +35,36 @@ public class FullMap extends FragmentActivity implements OnMapReadyCallback, Goo
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
 
         permissions();
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            mMap.setMyLocationEnabled(true);
-            mMap.setOnMyLocationButtonClickListener(this);
-            mMap.setOnMyLocationClickListener(this);
+            googleMap.setMyLocationEnabled(true);
+            googleMap.setOnMyLocationButtonClickListener(this);
+            googleMap.setOnMyLocationClickListener(this);
         }
 
 
-        LatLng khoury = new LatLng(42.338681, -71.092176);
-        mMap.addMarker(new MarkerOptions().position(khoury).title("Khoury College Of Computer Science"));
+        LatLng nupd = new LatLng(42.337680, -71.085168);
+        googleMap.addMarker(new MarkerOptions().position(nupd).title("NUPD"));
 
-        LatLng snell = new LatLng(42.339015, -71.088372);
-        mMap.addMarker(new MarkerOptions().position(snell).title("Snell Library"));
+        LatLng snell = new LatLng(42.338355, -71.088020);
+        googleMap.addMarker(new MarkerOptions().position(snell).title("Snell Library"));
 
         LatLng curry = new LatLng(42.339343, -71.087591);
-        mMap.addMarker(new MarkerOptions().position(curry).title("Curry Student Center"));
+        googleMap.addMarker(new MarkerOptions().position(curry).title("Curry Student Center"));
 
         LatLng marino = new LatLng(42.340494, -71.090333);
-        mMap.addMarker(new MarkerOptions().position(marino).title("Marino Recreation Center"));
+        googleMap.addMarker(new MarkerOptions().position(marino).title("Marino Recreation Center"));
 
-        mMap.setBuildingsEnabled(true);
+        googleMap.setBuildingsEnabled(true);
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(snell)
                 .zoom(17)
                 .bearing(280)
                 .tilt(30)
                 .build();
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
     @Override

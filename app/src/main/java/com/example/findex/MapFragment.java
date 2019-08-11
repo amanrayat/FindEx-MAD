@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -20,11 +19,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.Objects;
-
 public class MapFragment extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMyLocationClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
-    private GoogleMap mMap;
     private TextView building;
     private TextView room;
     private TextView hours;
@@ -38,6 +34,7 @@ public class MapFragment extends FragmentActivity implements OnMapReadyCallback,
         setContentView(R.layout.activity_location);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
         building = findViewById(R.id.buildingLocation);
@@ -48,7 +45,6 @@ public class MapFragment extends FragmentActivity implements OnMapReadyCallback,
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
         String location = getIntent().getStringExtra("location");
 
         LatLng finalLocation;
@@ -57,26 +53,44 @@ public class MapFragment extends FragmentActivity implements OnMapReadyCallback,
         String finalHours  = "Hours: COMING SOON";
         String finalPhone  = "Phone: COMING SOON";
 
+
+
+
+
+
+        assert location != null;
         switch (location){
-            case "khoury":
-                finalLocation = new LatLng(42.338681, -71.092176);
-                mMap.addMarker(new MarkerOptions().position(finalLocation).title("CCIS Building"));
-                finalBuilding = "Building: West Village H";
+            case "NUPD":
+                finalLocation = new LatLng(42.337680, -71.085168);
+                googleMap.addMarker(new MarkerOptions().position(finalLocation).title("NUPD"));
+                finalBuilding = "Building: NUPD";
+                finalRoom  = "";
+                finalHours  = "Hours: 8:00am - 4:00pm";
+                finalPhone  = "Phone: 617-373-2121";
                 break;
             case "snell":
                 finalLocation = new LatLng(42.338355, -71.088020);
-                mMap.addMarker(new MarkerOptions().position(finalLocation).title("Snell Library"));
+                googleMap.addMarker(new MarkerOptions().position(finalLocation).title("Snell Library"));
                 finalBuilding = "Building: Snell Library";
+                finalRoom  = "Help and Information Desk";
+                finalHours  = "Hours: Open 24HR";
+                finalPhone  = "Phone: 617-373-8778";
                 break;
             case "curry":
                 finalLocation = new LatLng(42.339343, -71.087591);
-                mMap.addMarker(new MarkerOptions().position(finalLocation).title("Curry Student Center"));
+                googleMap.addMarker(new MarkerOptions().position(finalLocation).title("Curry Student Center"));
                 finalBuilding = "Building: Curry Student Center";
+                finalRoom  = "";
+                finalHours  = "Hours: 7:00AM - 12:00AM";
+                finalPhone  = "";
                 break;
             case "marino":
                 finalLocation = new LatLng(42.340494, -71.090333);
-                mMap.addMarker(new MarkerOptions().position(finalLocation).title("Marino Recreation Center"));
+                googleMap.addMarker(new MarkerOptions().position(finalLocation).title("Marino Recreation Center"));
                 finalBuilding = "Building: Marino Recreation Center";
+                finalRoom  = "First Floor";
+                finalHours  = "Hours: 5:00am - 12:00pm";
+                finalPhone  = "Phone: 617-373-4433";
                 break;
                 default:
                     finalLocation = new LatLng(42.337944, -71.090145);
@@ -88,21 +102,21 @@ public class MapFragment extends FragmentActivity implements OnMapReadyCallback,
         phone.setText(finalPhone);
 
 
-        mMap.setBuildingsEnabled(true);
+        googleMap.setBuildingsEnabled(true);
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(finalLocation)
                 .zoom(17)
                 .bearing(360)
                 .tilt(30)
                 .build();
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
         permissions();
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-            mMap.setMyLocationEnabled(true);
-            mMap.setOnMyLocationButtonClickListener(this);
-            mMap.setOnMyLocationClickListener(this);
+            googleMap.setMyLocationEnabled(true);
+            googleMap.setOnMyLocationButtonClickListener(this);
+            googleMap.setOnMyLocationClickListener(this);
             System.out.println("Success");
         }
     }

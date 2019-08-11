@@ -1,4 +1,4 @@
-package com.example.findex;
+package com.example.findex.dummy;
 
 
 public class Item {

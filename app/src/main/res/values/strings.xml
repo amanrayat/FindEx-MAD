@@ -14,12 +14,15 @@
     <string name="schoolEmail">NEU Email</string>
     <string name="password2">Password</string>
     <string name="Confirm">Confirm Password</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_full_map">Map</string>
+    <string name="welcome_to_findex_sign_in_to_continue">Welcome To FindEx. Sign In to Continue</string>
     <string name="default_web_client_id2" translatable="false">730406173344-c75pgbpedq93kl9ggvmqoimuc6ui2gak.apps.googleusercontent.com</string>
     <!--<string name="default_web_client_id">881553620314-37v2in115d6uarpj3gekskt1hsbvnquo.apps.googleusercontent.com</string>-->
     <string name="add">+</string>
     <string-array name="locationList">
         <item>Location</item>
-        <item>Khoury College</item>
+        <item>NUPD</item>
         <item>Snell Library</item>
         <item>Curry Student Center</item>
         <item>Marino Center</item>
@@ -33,9 +36,7 @@
         <item>Other</item>
     </string-array>
     <string name="title_activity_location">Map</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_full_map">Map</string>
-
+    <string name="delete">Delete</string>
+    <string name="get_location">Get Location</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAiqy7mteoMzmS43Kflj5gKRwC3MawHj24</string>
 </resources>

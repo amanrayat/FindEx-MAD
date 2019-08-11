@@ -3,16 +3,12 @@ package com.example.findex;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,11 +41,11 @@ public class FoundItemList extends AppCompatActivity {
     ListView foundListView;
     private DatabaseReference mDatabase;
     private SearchView searchBar;
-    ArrayList<FoundItem> foundItems = new ArrayList<FoundItem>();
+    ArrayList<FoundItem> foundItems = new ArrayList<>();
     String TAG = "debug";
     CustomFoundListAdapter myAdapter = new CustomFoundListAdapter(this, foundItems);
     GoogleSignInClient mGoogleSignInClient;
-    List<String> keyList = new ArrayList<String>();
+    List<String> keyList = new ArrayList<>();
 
 
     @Override
@@ -110,7 +106,7 @@ public class FoundItemList extends AppCompatActivity {
         });
 
 
-        logout = (ImageButton) findViewById(R.id.logout);
+        logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -203,4 +199,8 @@ public class FoundItemList extends AppCompatActivity {
 
     }
 
-}
+    @Override
+    public void onBackPressed() {
+        }
+    }
+
