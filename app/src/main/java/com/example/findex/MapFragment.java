@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -46,17 +45,11 @@ public class MapFragment extends FragmentActivity implements OnMapReadyCallback,
     @Override
     public void onMapReady(GoogleMap googleMap) {
         String location = getIntent().getStringExtra("location");
-
         LatLng finalLocation;
         String finalBuilding = "Building: COMING SOON";
         String finalRoom  = "Room: COMING SOON";
         String finalHours  = "Hours: COMING SOON";
         String finalPhone  = "Phone: COMING SOON";
-
-
-
-
-
 
         assert location != null;
         switch (location){
