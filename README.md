@@ -2,6 +2,9 @@
 
 ### About Find-Ex
 
+FindEx is a Android mobile Application aimed at building an ecosystem to report and track the items which are lost on campus.
+
+
 ### Problem we are trying to solve.
 
 Students tend to lose their personal belongings when they are on campus.
@@ -33,5 +36,17 @@ If you lost something:
 ![alt text](https://staticwebsiteaman.s3.amazonaws.com/lost.png)
  
  
+### Tech Stack Used
+
+* Android (Java)
+* Firebase Authentication.
+* Firebase RealTime Database.
+* Firebase Storage.
  
+ 
+
+### Team Members
+
+* Aman Rayat
+* Benjamin Steele
 
