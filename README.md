@@ -1,8 +1,8 @@
 # FindEx-MAD
 
-###About Find-Ex
+### About Find-Ex
 
-###Problem we are trying to solve.
+### Problem we are trying to solve.
 
 Students tend to lose their personal belongings when they are on campus.
 
