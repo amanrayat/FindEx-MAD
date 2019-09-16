@@ -3,7 +3,6 @@ package com.example.findex;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -25,11 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import utils.FoundItem;
 
 public class FoundItemDetailActivity extends AppCompatActivity {
@@ -49,11 +44,13 @@ public class FoundItemDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Get the firebase instance.
         mAuth = FirebaseAuth.getInstance();
 
         setContentView(R.layout.activity_found_item_detail);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        // Get the refernce of the elements.
         charName = findViewById(R.id.FoundTitleText);
         description = findViewById(R.id.description);
         imageView = findViewById(R.id.imageView1);
@@ -66,14 +63,19 @@ public class FoundItemDetailActivity extends AppCompatActivity {
         query.addChildEventListener(childEventListener);
         locationButton = findViewById(R.id.claimButton);
         deleteButton = findViewById(R.id.deleteButton);
-
-
-
-
     }
-
-
+    
+    /**
+     * childeventlistener is the listener which responds to the 
+     * 
+     */
     ChildEventListener childEventListener = new ChildEventListener() {
+
+        /**
+         * This function is invoked when a new child is added to the list.
+         * @param dataSnapshot
+         * @param s
+         */
         @Override
         public void onChildAdded(@NonNull final DataSnapshot dataSnapshot, @Nullable String s) {
             itemKey = dataSnapshot.getKey();
@@ -86,10 +88,16 @@ public class FoundItemDetailActivity extends AppCompatActivity {
             dateFound.setText(df2.format(item.getDate()));
             reportedByText.setText("Reported By: " + item.getReportedByEmail());
 
+            /**
+             * Show the delete button only if the item was reported by the current user.
+             */
             if(!(mAuth.getCurrentUser().getEmail().equals(item.getReportedByEmail()))){
                 deleteButton.setVisibility(View.GONE);
             }
-//
+
+            /**
+             * OnClick listener to delete a post.
+             */
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -104,15 +112,22 @@ public class FoundItemDetailActivity extends AppCompatActivity {
                 }
             });
 
+            /**
+             * OnClick Listener to open the maps.
+             */
             locationButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println(item.getLocation().toString());
                     openLocation(item.getLocation().toString());
                 }
             });
         }
 
+        /**
+         * Unimplemented childlistener methods.
+         * @param dataSnapshot
+         * @param s
+         */
         @Override
         public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
@@ -133,6 +148,12 @@ public class FoundItemDetailActivity extends AppCompatActivity {
 
         }
     };
+
+    /**
+     * This function is used to open the Maps.
+     * The function sets the intent and invokes the activity.
+     * @param location
+     */
 
     public void openLocation(String location){
         Intent intent = new Intent(this, MapFragment.class);
