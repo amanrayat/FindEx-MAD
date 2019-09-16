@@ -8,7 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.findex.R;
+import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class CustomFoundListAdapter extends BaseAdapter {
@@ -39,17 +42,28 @@ public class CustomFoundListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
+
         if(view == null){
             view = View.inflate(context, R.layout.found_item_adapter_item, null);
+            viewHolder = new ViewHolder();
+            viewHolder.imageView = view.findViewById(R.id.foundItemImageAdapterItem);
+            viewHolder.titleView = view.findViewById(R.id.foundItemTitleAdapterItem);
+            viewHolder.descriptionView = view.findViewById(R.id.foundItemDescriptionAdapterItem);
+            view.setTag(viewHolder);
         }
-        ImageView imageView = view.findViewById(R.id.foundItemImageAdapterItem);
-        TextView titleView = view.findViewById(R.id.foundItemTitleAdapterItem);
-        TextView descriptionView = view.findViewById(R.id.foundItemDescriptionAdapterItem);
-
-        imageView.setImageResource(foundItems.get(i).getImageResID());
-        titleView.setText(foundItems.get(i).getTitle());
-        descriptionView.setText(foundItems.get(i).getDescription());
-
+        else{
+            viewHolder = (ViewHolder) view.getTag();
+        }
+        DateFormat df2 = new SimpleDateFormat("EEE, MMM d, ''yy");
+        Picasso.get().load(foundItems.get(i).getimageUrl()).into(viewHolder.imageView);
+        viewHolder.titleView.setText(foundItems.get(i).getTitle());
+        viewHolder.descriptionView.setText(df2.format(foundItems.get(i).getDate()));
         return view;
+    }
+    static class ViewHolder {
+        ImageView imageView;
+        TextView titleView;
+        TextView descriptionView;
     }
 }

@@ -5,20 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
+    android:orientation="vertical"
+    android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
     tools:context=".MainActivity">
 
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/toolbar" />
 
     <ListView
         android:id="@+id/myListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="54dp" />
+    <!--<<<<<<< HEAD-->
+<!--=======-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+<!--&gt;>>>>>> 26505f57fbc011479cc674ab3e2ef16079edff3e-->
+        <!--android:layout_marginStart="0dp"-->
+        <!--android:layout_marginEnd="0dp"-->
+        <!--android:layout_marginBottom="1dp" />-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="1dp" />
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="10dp"
+        android:background="#F4282D"
+        android:backgroundTint="#F4282D"
+        android:clickable="true"
+        android:foregroundTint="#F2F2F2"
+        android:tint="#F2F2F2"
+        app:elevation="10dp"
+        app:rippleColor="#F2F2F2"
+        app:srcCompat="@drawable/add_black" />
+
+
+
 
 </RelativeLayout>

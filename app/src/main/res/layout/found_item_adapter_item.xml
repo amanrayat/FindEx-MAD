@@ -9,29 +9,26 @@
     <ImageView
         android:id="@+id/foundItemImageAdapterItem"
         android:layout_width="match_parent"
-        android:layout_height="247dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/macbooktestimage" />
+        android:layout_height="277dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/foundItemTitleAdapterItem"
-        android:layout_width="match_parent"
+        android:layout_width="375dp"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="TextView" />
+        android:layout_marginRight="20dp"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/foundItemDescriptionAdapterItem"
-        android:layout_width="match_parent"
+        android:layout_width="375dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:text="TextView"
         android:textColor="@color/colorPrimaryDark" />
 
 </LinearLayout>
