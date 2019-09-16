@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "SignInActivity";
-
     GoogleSignInClient mGoogleSignInClient;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 if (isHusky(account.getEmail())){
+                    // Husky email is valid, Sign On the User.
                     firebaseAuthWithGoogle(account);
                 }
                 else {
@@ -100,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -119,11 +116,17 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    // Function used in onCreate to open FoundList activity
+    /**
+     * Function used in onCreate to open FoundList activity
+     * */ 
     public void openFoundList(FirebaseUser currentUser){
         Intent intent = new Intent(this, FoundItemList.class);
         startActivity(intent);
     }
+
+    /**
+     * This function is used to check if the entered email is a Husky Email (NEU) or not.
+     */
     public Boolean isHusky(String s){
         Pattern patt = Pattern.compile("^[a-zA-Z0-9_.+-]+@husky.neu.edu$");
         Matcher matcher = patt.matcher(s);
@@ -133,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-
 
     @Override
     public void onBackPressed() {
